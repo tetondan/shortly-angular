@@ -15,6 +15,7 @@ module.exports = {
       res.json(links);
     })
     .fail(function (error) {
+      console.log(error)
       next(error);
     });
   },
