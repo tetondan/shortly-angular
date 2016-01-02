@@ -1,9 +1,27 @@
+
+
 <div id='container' ng-controller='LinksController'>
-  <div ng-repeat='link in data.links'>{{link.url}}{{link.name}}</div>
+  <a href='/#/links'>Links</a>
+  <a href='/#/shorten'>Shorten</a>
+  <a href='/#/signin'>Logout</a>
+  <div ng-repeat='link in data.links'>
+    <h4>{{link.name}}</h4>
+    {{link.url}}
+    {{link.base_url + link.code}}
+    Visits: {{link.visits}}
+    </div>
 
 </div>
 
 
 
-
+<!-- {
+    "_id": "568814bb16dd69920a90e8bd",
+    "code": "738dd",
+    "url": "http://www.google.com",
+    "visits": 0,
+    "base_url": "http://localhost:3000",
+    "title": "Google",
+    "__v": 0
+  } -->
 

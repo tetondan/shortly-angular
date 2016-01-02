@@ -35,13 +35,13 @@ angular.module('shortly.services', [])
   // after you signin/signup open devtools, click resources,
   // then localStorage and you'll see your token from the server
   var signin = function (user) {
-    console.log(user);
     return $http({
       method: 'POST',
       url: '/api/users/signin',
       data: user,
     })
     .then(function (resp) {
+      console.log(resp.data.token);
       return resp.data.token;
     });
   };
