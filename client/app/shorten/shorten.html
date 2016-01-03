@@ -1,9 +1,65 @@
 <div id='container' ng-controller='ShortenController'>
-  <a href='/#/links'>Links</a>
-  <a href='/#/shorten'>Shorten</a>
-  <a href='/#/signin'>Logout</a>
-  <input ng-model='shorten'/>
-  <a ng-click='addLink(shorten)'>Submit</a>
+
+<!-- navigation -->
+  <div class='navigation'>
+  <ul>
+    <li><a href='#/links' class='index'>All Links</a></li>
+    <li><a href='#/shorten' class='create'>Shorten</a></li>
+    <li><a href='#/signin' class='logout'>Logout</a></li>
+  </ul>
 </div>
 
 
+<form name="url" novalidate>
+  <input type='url' ng-model='shorten' name='shorten' required />
+    <div class="custom-error" ng-show="url.shorten.$pristine || url.shorten.$dirty && url.shorten.$error.required">
+    Invalid: URL is required
+    </div>
+    <div class="custom-error" ng-show="url.shorten.$dirty && url.shorten.$invalid  ">
+    Valid URL is required
+    </div>
+  <button ng-click='addLink(shorten)'>Submit</button>
+</form>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+<!doctype html>
+
+        <form name="myForm" novalidate ng-submit="submitForm();">
+             <h3>Basic example</h3>
+
+            <div class="form-section">
+
+                <p>Username:</p>
+                <input type="text" name="username1" ng-model="username1"
+                required />
+               
+                <input type="submit" ng-disabled="myForm.username1.$pristine || myForm.username1.$dirty && myForm.username1.$invalid">
+
+            <div class="custom-error" ng-show="myForm.username1.$dirty && myForm.username1.$invalid">Invalid:
+<span ng-show="myForm.username1.$error.required">Username is required.</span>
+
+                </div>
+
+                <p>Email:</p>
+                <input type="email" name="email1" ng-model="email1" required/>
+                <input type="submit" ng-disabled="myForm.email1.$pristine || myForm.email1.$dirty && myForm.email1.$invalid"/>
+                <div class="custom-error" ng-show="myForm.email1.$dirty && myForm.email1.$invalid">Invalid:
+
+                            <span ng-show="myForm.email1.$error.required">Email is required.</span>
+
+                    <span ng-show="myForm.email1.$error.email">Please, write a valid email address.</span>
+
+                </div>
+            </div>
+        </form> -->

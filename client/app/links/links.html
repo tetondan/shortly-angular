@@ -1,15 +1,25 @@
 
 
 <div id='container' ng-controller='LinksController'>
-  <a href='/#/links'>Links</a>
-  <a href='/#/shorten'>Shorten</a>
-  <a href='/#/signin'>Logout</a>
-  <div ng-repeat='link in data.links'>
-    <h4>{{link.name}}</h4>
-    {{link.url}}
-    {{link.base_url + link.code}}
-    Visits: {{link.visits}}
-    </div>
+
+
+  <div class='navigation'>
+  <ul>
+    <li><a href='#/links' class='index'>All Links</a></li>
+    <li><a href='#/shorten' class='create'>Shorten</a></li>
+    <li><a href='#/signin' class='logout'>Logout</a></li>
+  </ul>
+  </div>
+
+  <input type='text' ng-model='search'/>
+  <div class='info' ng-repeat='link in data.links | orderBy: "visits" | filter:search'>
+    <img src='assets/redirect_icon.png'/>
+    <div class='title'>{{link.title}}</div>
+    <div class='original'>{{link.url}}</div>
+    <a href='{{link.base_url}}/{{link.code}}'>{{link.base_url}}/{{link.code}}</a>
+    <div class='visits'><span class='count'>{{link.visits}}</span>Visits</div>
+  </div>
+
 
 </div>
 
